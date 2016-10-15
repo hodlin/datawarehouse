@@ -1,5 +1,5 @@
 import re
-from datetime import time, date, timedelta
+from datetime import time, date, timedelta, datetime
 
 
 def to_time(time_str=''):
@@ -28,10 +28,28 @@ def to_date(date_str=''):
     return date(year=int(year), month=int(month), day=int(day))
 
 
+def to_seconds(time_str=''):
+    _time = to_time(time_str)
+    _time = _time.hour * 3600 + _time.minute * 60 + _time.second
+    return _time
+
+
 def to_decimal_time(time_str=''):
     _time = to_time(time_str)
     _time = _time.hour + _time.minute / 60 + _time.second / 3600
     return _time
+
+
+def to_datetime(date_str='', time_str='', date_dt=None, time_dt=None):
+    if date_dt and time_dt:
+        _date = date_dt
+        _time = time_dt
+    else:
+        _date = to_date(date_str)
+        _time = to_time(time_str)
+    return datetime(year=_date.year, month=_date.month, day=_date.day,
+                    hour=_time.hour, minute=_time.minute, second=_time.second)
+
 
 if __name__ == '__main__':
     print(to_time(time_str='102'))

@@ -12,28 +12,36 @@ from matplotlib import pyplot as plt
 # with open('../data/new_data.csv', 'w', newline='\n') as output:
 #     output.write(header)
 
-data = pd.read_csv('../data/transformed_dec.csv', sep=',')
+data = pd.read_csv('../data/transformed_dec_duration.csv', sep=',')
 
-print(data)
+# print(data)
 
-plt.figure(1)
-plt.subplot(1, 2, 1)
-plt.hist(data['Startzeit'], bins=24, range=(0, 24), color='green')
-plt.title('Startzeit')
-plt.xlabel('Time, h')
-plt.ylabel('Number of observation')
-x1, x2, y1, y2 = plt.axis()
-plt.axis((0, 24, y1, y2))
+# unique_jobs = data['Jobname'].unique
+# print(unique_jobs)
 
-plt.subplot(1, 2, 2)
-plt.hist(data['Endzeit'], bins=24, range=(0, 24), color='red')
-plt.title('Endzeit')
-plt.xlabel('Time, h')
-plt.ylabel('Number of observations')
-x1, x2, y1, y2 = plt.axis()
-plt.axis((0, 24, y1, y2))
+unique_jobs = data['Jobname'].value_counts()
+print(unique_jobs[:1])
 
-plt.show()
+
+
+# plt.figure(1)
+# plt.subplot(1, 2, 1)
+# plt.hist(data['Startzeit'], bins=24, range=(0, 24), color='green')
+# plt.title('Startzeit')
+# plt.xlabel('Time, h')
+# plt.ylabel('Number of observation')
+# x1, x2, y1, y2 = plt.axis()
+# plt.axis((0, 24, y1, y2))
+#
+# plt.subplot(1, 2, 2)
+# plt.hist(data['Endzeit'], bins=24, range=(0, 24), color='red')
+# plt.title('Endzeit')
+# plt.xlabel('Time, h')
+# plt.ylabel('Number of observations')
+# x1, x2, y1, y2 = plt.axis()
+# plt.axis((0, 24, y1, y2))
+#
+# plt.show()
 
 # data.to_csv('data/normal_time.csv')
 # print(data.shape)
